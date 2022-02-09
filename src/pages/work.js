@@ -1,40 +1,53 @@
-// src/pages/index.js
+// src/pages/work.js
 
 import React from "react"
 import { graphql } from "gatsby"
 import Seo from "../components/Seo.js"
 import Layout from "../components/Layout.js"
+import PageTitle from "../components/PageTitle.js"
+import PageIntro from "../components/PageIntro.js"
 import WorkThumbnails from "../components/WorkThumbnails.js"
+import TagList from "../components/TagList.js"
 import parse from "html-react-parser"
 
-const HomePageTemplate = ({ data }) => (
+const WorkPageTemplate = ({ data }) => (
   <Layout>
-    <Seo title="Front-End Development" />
+    <Seo title={data.wpPage.title} />
 
-    <WorkThumbnails classes="
-      homepage-work
-      border-b
-      border-gray-light
-      my-8
-      pb-8" thumbnails={data.allWpWork.edges} />
+    <PageTitle link="/" breadcrumb="Home" title={data.wpPage.title} />
+    <PageIntro intro={data.wpPage.page.intro} />
 
-    {!!data.wpPage.page.content && <div className="wysiwyg">{parse(data.wpPage.page.content)}</div>}
+    {!!data.wpPage.content && <>{parse(data.wpPage.page.content)}</>}
+
+    <TagList tags={data.allWpTag.edges} />
+
+    <WorkThumbnails thumbnails={data.allWpWork.edges} classes="my-8" />
   </Layout>
 )
 
-export default HomePageTemplate
+export default WorkPageTemplate
 
 export const query = graphql`
   query {
-    wpPage(isFrontPage: { eq: true }) {
+    wpPage(slug: { eq: "work" }) {
       id
       title
       uri
       page {
+        intro
         content
       }
     }
-    allWpWork(sort: { fields: title, order: ASC }, limit: 4) {
+    allWpTag(sort: {fields: name, order: ASC}) {
+      edges {
+        node {
+          name
+          count
+          uri
+        }
+      }
+    }
+    allWpWork(sort: { fields: title, order: ASC }) {
       edges {
         node {
           title

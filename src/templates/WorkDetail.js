@@ -1,0 +1,111 @@
+// src/templates/Work.js
+
+import React from "react"
+import { Link, graphql } from "gatsby"
+// import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Seo from "../components/Seo.js"
+import Layout from "../components/Layout.js"
+import PageTitle from "../components/PageTitle.js"
+import parse from "html-react-parser"
+import { ImgixGatsbyImage } from "@imgix/gatsby"
+
+const WorkTemplate = ({ data }) => (
+  <Layout>
+    <Seo title={data.wpWork.title} />
+
+    <PageTitle link="/work/" breadcrumb="Work" title={data.wpWork.title} />
+
+    <div className="work-detail">
+      {!!data.wpWork.work.description && (
+        <div className="work-detail__desc wysiwyg">
+          {parse(data.wpWork.work.description)}
+        </div>
+      )}
+
+      <div className="work-detail__client pr-4 text-base">
+        <h2 className="font-bold text-gray-medium">Client</h2>
+        <p>{data.wpWork.work.client}</p>
+
+        <h2 className="font-bold mt-4 text-gray-medium">Website</h2>
+        <p>
+          <a
+            className="block overflow-ellipsis overflow-hidden whitespace-nowrap"
+            href={data.wpWork.work.website}
+          >
+            {data.wpWork.work.displayUrl}
+          </a>
+        </p>
+      </div>
+
+      <div className="work-detail__tags pr-4 text-base">
+        <h2 className="font-bold text-gray-medium">Tags</h2>
+        <ul>
+          {data.wpWork.tags.nodes.map(tag => {
+            return (
+              <li key={tag.uri}>
+                <Link to={"/work" + tag.uri}>
+                  <span>{parse(tag.name)}</span>
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    </div>
+
+    <h2 className="sr-only">Images</h2>
+    <ul className="work-screenshots">
+      {data.wpWork.work.images.map((screenshot, index) => {
+        let imagePath = screenshot.image.sourceUrl.replace(
+          "https://cms.ten1seven.com/wp-content/uploads/",
+          ""
+        )
+        return (
+          <li className="border-t-2 border-gray-light my-8 pt-8" key={index}>
+            <ImgixGatsbyImage
+              alt={screenshot.image.altText}
+              src={`https://ten1seven.imgix.net/${imagePath}`}
+              imgixParams={{ auto: "format,compress" }}
+              layout="constrained"
+              width={768}
+              sourceWidth={screenshot.image.mediaDetails.width}
+              sourceHeight={screenshot.image.mediaDetails.height}
+            />
+          </li>
+        )
+      })}
+    </ul>
+  </Layout>
+)
+
+export default WorkTemplate
+
+export const query = graphql`
+  query ($id: String!) {
+    wpWork(id: { eq: $id }) {
+      title
+      work {
+        client
+        description
+        displayUrl
+        website
+        images {
+          image {
+            altText
+            sourceUrl
+            mediaDetails {
+              height
+              width
+            }
+          }
+        }
+      }
+      tags {
+        nodes {
+          name
+          uri
+        }
+      }
+    }
+  }
+`
