@@ -72,7 +72,6 @@ const WorkTemplate = ({ data }) => (
               src={`https://ten1seven.imgix.net/${imagePath}`}
               imgixParams={{ auto: "format,compress" }}
               layout="constrained"
-              width={768}
               sourceWidth={screenshot.image.mediaDetails.width}
               sourceHeight={screenshot.image.mediaDetails.height}
             />
