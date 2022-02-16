@@ -3,7 +3,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout.js"
-import Seo from "../components/Seo.js"
+import Seo from "gatsby-plugin-wpgraphql-seo"
 import PageTitle from "../components/PageTitle.js"
 import TagList from "../components/TagList.js"
 import WorkThumbnails from "../components/WorkThumbnails.js"
@@ -11,11 +11,13 @@ import nl2br from "react-nl2br"
 
 const PageTemplate = ({ data }) => (
   <Layout>
-    <Seo title={data.wpTag.name} />
+    <Seo post={data.wpTag} />
 
     <PageTitle link="/work/" breadcrumb="Work" title={data.wpTag.name} />
 
-    {!!data.wpTag.description && <p className="my-8">{nl2br(data.wpTag.description)}</p>}
+    {!!data.wpTag.description && (
+      <p className="my-8">{nl2br(data.wpTag.description)}</p>
+    )}
 
     <TagList tags={data.allWpTag.edges} />
 
@@ -30,8 +32,35 @@ export const query = graphql`
     wpTag(id: { eq: $id }) {
       name
       description
+      seo {
+        title
+        metaDesc
+        focuskw
+        metaKeywords
+        metaRobotsNoindex
+        metaRobotsNofollow
+        opengraphTitle
+        opengraphDescription
+        opengraphImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        canonical
+        cornerstone
+        schema {
+          raw
+        }
+      }
     }
-    allWpTag(sort: {fields: name, order: ASC}) {
+    allWpTag(sort: { fields: name, order: ASC }) {
       edges {
         node {
           name

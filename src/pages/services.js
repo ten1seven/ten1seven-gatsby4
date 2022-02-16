@@ -2,7 +2,7 @@
 
 import React from "react"
 import { graphql } from "gatsby"
-import Seo from "../components/Seo.js"
+import Seo from "gatsby-plugin-wpgraphql-seo"
 import Layout from "../components/Layout.js"
 import PageTitle from "../components/PageTitle.js"
 import PageIntro from "../components/PageIntro.js"
@@ -10,7 +10,7 @@ import parse from "html-react-parser"
 
 const ServicesPageTemplate = ({ data }) => (
   <Layout>
-    <Seo title={data.wpPage.title} />
+    <Seo post={data.wpPage} />
 
     <PageTitle link="/" breadcrumb="Home" title={data.wpPage.title} />
     <PageIntro intro={data.wpPage.page.intro} />
@@ -45,6 +45,35 @@ export const query = graphql`
       page {
         intro
         content
+      }
+      seo {
+        title
+        metaDesc
+        focuskw
+        metaKeywords
+        metaRobotsNoindex
+        metaRobotsNofollow
+        opengraphTitle
+        opengraphDescription
+        opengraphImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        canonical
+        cornerstone
+        schema {
+          articleType
+          pageType
+          raw
+        }
       }
       services {
         servicesList {

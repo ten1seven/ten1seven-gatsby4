@@ -3,7 +3,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 // import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Seo from "../components/Seo.js"
+import Seo from "gatsby-plugin-wpgraphql-seo"
 import Layout from "../components/Layout.js"
 import PageTitle from "../components/PageTitle.js"
 import parse from "html-react-parser"
@@ -11,7 +11,7 @@ import { ImgixGatsbyImage } from "@imgix/gatsby"
 
 const WorkTemplate = ({ data }) => (
   <Layout>
-    <Seo title={data.wpWork.title} />
+    <Seo post={data.wpWork} />
 
     <PageTitle link="/work/" breadcrumb="Work" title={data.wpWork.title} />
 
@@ -64,6 +64,7 @@ const WorkTemplate = ({ data }) => (
           <li className="border-t-2 border-gray-light my-8 pt-8" key={index}>
             <ImgixGatsbyImage
               alt={screenshot.image.altText}
+              className="w-full"
               src={`https://ten1seven.imgix.net/${imagePath}`}
               imgixParams={{ auto: "format,compress" }}
               layout="constrained"
@@ -104,6 +105,35 @@ export const query = graphql`
         nodes {
           name
           uri
+        }
+      }
+      seo {
+        title
+        metaDesc
+        focuskw
+        metaKeywords
+        metaRobotsNoindex
+        metaRobotsNofollow
+        opengraphTitle
+        opengraphDescription
+        opengraphImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage {
+          altText
+          sourceUrl
+          srcSet
+        }
+        canonical
+        cornerstone
+        schema {
+          articleType
+          pageType
+          raw
         }
       }
     }

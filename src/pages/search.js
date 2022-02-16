@@ -3,7 +3,7 @@
 import React from "react"
 // import { Link } from "gatsby"
 
-import Seo from "../components/Seo.js"
+// import Seo from "gatsby-plugin-wpgraphql-seo"
 import Layout from "../components/Layout.js"
 import PageTitle from "../components/PageTitle.js"
 
@@ -46,8 +46,6 @@ export default class Search extends React.Component {
   render() {
     return (
       <Layout>
-        <Seo title="Search" />
-
         <PageTitle link="/" breadcrumb="Home" title="Search" />
 
         <label className="search-label" htmlFor="search-input">
