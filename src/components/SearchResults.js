@@ -1,5 +1,5 @@
 import React from "react"
-// import { Link } from "gatsby"
+import { Link } from "gatsby"
 
 class Results extends React.Component {
   render() {
@@ -14,10 +14,14 @@ class Results extends React.Component {
             {Object.keys(data).map((innerAttr, index) => {
               return (
                 <li key={index} className="mt-4">
-                  <span className="block text-sm uppercase">
-                    {data[innerAttr].post_type}
-                  </span>
-                  <strong className="text-2xl">{data[innerAttr].title}</strong>
+                  <Link to={data[innerAttr].url}>
+                    <span className="block text-sm uppercase">
+                      {data[innerAttr].post_type}
+                    </span>
+                    <strong className="text-2xl">
+                      {data[innerAttr].title}
+                    </strong>
+                  </Link>
                 </li>
               )
             })}

@@ -27,8 +27,6 @@ export default class Search extends React.Component {
     if (value.length >= 3 && !this.state.loading) {
       let fetchUrl = `http://ten1seven-gatsby.test/wp-json/ten1seven/v1/search?s=${value}`
 
-      console.log(fetchUrl)
-
       fetch(fetchUrl)
         .then(response => response.json()) // parse JSON from request
         .then(resultData => {
