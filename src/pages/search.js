@@ -25,7 +25,7 @@ export default class Search extends React.Component {
       loading: true,
     })
 
-    if (value.length >= 3 && !this.state.loading) {
+    if (value.length >= 3) {
       let fetchUrl = `https://cms.ten1seven.com/wp-json/ten1seven/v1/search?s=${value}`
 
       fetch(fetchUrl)
