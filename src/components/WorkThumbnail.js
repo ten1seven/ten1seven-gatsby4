@@ -2,17 +2,31 @@
 
 import React from "react"
 import { Link } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { ImgixGatsbyImage } from "@imgix/gatsby"
 
 class WorkThumbnail extends React.Component {
   render() {
     let thumb = this.props.thumbnail
-    let imagePath = getImage(thumb.work.thumbnail.localFile)
+    let imagePath = thumb.work.thumbnail.sourceUrl.replace(
+      "https://cms.ten1seven.com/wp-content/uploads/",
+      ""
+    )
 
     return (
       <li key={this.props.index}>
         <Link className="group block relative no-underline" to={thumb.uri}>
-          <GatsbyImage image={imagePath} alt={``} loading="lazy" />
+          <ImgixGatsbyImage
+            alt=""
+            className=""
+            aspectRatio={4 / 3}
+            src={`https://ten1seven.imgix.net/${imagePath}`}
+            imgixParams={{
+              auto: "format,compress",
+              fit: "crop",
+              crop: "top,center",
+            }}
+            layout="constrained"
+          />
           <span
             className="
             absolute
