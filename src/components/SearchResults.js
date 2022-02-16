@@ -5,7 +5,7 @@ class Results extends React.Component {
   render() {
     const data = this.props.data
 
-    console.log(data)
+    // console.log(data)
 
     return (
       <>

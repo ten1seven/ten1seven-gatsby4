@@ -18,7 +18,8 @@ export default class Search extends React.Component {
   }
 
   handleInputChange = value => {
-    console.log(value)
+    // console.log(value)
+
     this.setState({
       query: value,
       loading: true,
