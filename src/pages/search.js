@@ -11,6 +11,7 @@ export default class Search extends React.Component {
   state = {
     query: "",
     results: {},
+    loading: false,
   }
 
   handleInputChange = event => {
@@ -18,6 +19,7 @@ export default class Search extends React.Component {
 
     this.setState({
       query: value,
+      loading: true,
     })
 
     if (value.length >= 3) {
@@ -30,11 +32,13 @@ export default class Search extends React.Component {
 
           this.setState({
             results: resultData,
+            loading: false,
           })
         })
     } else {
       this.setState({
         results: {},
+        loading: false,
       })
     }
   }
@@ -57,6 +61,8 @@ export default class Search extends React.Component {
         </label>
 
         <p>There are {this.state.results.length || "no"} results.</p>
+
+        <p>Loading {this.state.loading ? "yes" : "no"}</p>
       </Layout>
     )
   }
