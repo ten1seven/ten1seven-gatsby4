@@ -26,15 +26,19 @@ const WorkTemplate = ({ data }) => (
         <h2 className="font-bold text-gray-medium">Client</h2>
         <p>{data.wpWork.work.client}</p>
 
-        <h2 className="font-bold mt-4 text-gray-medium">Website</h2>
-        <p>
-          <a
-            className="block overflow-ellipsis overflow-hidden whitespace-nowrap"
-            href={data.wpWork.work.website}
-          >
-            {data.wpWork.work.displayUrl}
-          </a>
-        </p>
+        {data.wpWork.work.website && data.wpWork.work.displayUrl && (
+          <>
+            <h2 className="font-bold mt-4 text-gray-medium">Website</h2>
+            <p>
+              <a
+                className="block overflow-ellipsis overflow-hidden whitespace-nowrap"
+                href={data.wpWork.work.website}
+              >
+                {data.wpWork.work.displayUrl}
+              </a>
+            </p>
+          </>
+        )}
       </div>
 
       <div className="work-detail__tags pr-4 text-base">
