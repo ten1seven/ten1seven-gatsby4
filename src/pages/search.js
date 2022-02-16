@@ -22,7 +22,7 @@ export default class Search extends React.Component {
 
     if (value.length >= 3) {
       fetch(
-        `http://ten1seven-gatsby.test/wp-json/ten1seven/v1/search?s=${this.state.query}`
+        `https://cms.ten1seven.com/wp-json/ten1seven/v1/search?s=${this.state.query}`
       )
         .then(response => response.json()) // parse JSON from request
         .then(resultData => {
