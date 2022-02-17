@@ -11,7 +11,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: process.env.GRAPHQL_ENDPOINT,
+        url: "https://cms.ten1seven.com/graphql",
       },
     },
     {

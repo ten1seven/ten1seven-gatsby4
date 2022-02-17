@@ -61,7 +61,7 @@ const WorkTemplate = ({ data }) => (
     <ul className="work-screenshots">
       {data.wpWork.work.images.map((screenshot, index) => {
         let imagePath = screenshot.image.sourceUrl.replace(
-          `${process.env.UPLOADS_DIR}`,
+          "https://cms.ten1seven.com/wp-content/uploads/",
           ""
         )
         return (
