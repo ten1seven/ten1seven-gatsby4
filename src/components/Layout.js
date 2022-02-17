@@ -156,9 +156,6 @@ const Layout = ({ isFrontPage, children }) => {
             <Link className="pr-4" to="/about/">
               About
             </Link>
-            <Link className="pr-4" to="/search/">
-              Search
-            </Link>
           </p>
 
           <p className="mt-4 md:mt-0 md:text-right">
