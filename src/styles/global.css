@@ -74,7 +74,7 @@ header a:focus {
   @apply font-bold;
   @apply pb-4;
   @apply text-4xl;
-  @apply text-gray-medium;
+  @apply text-gray-darker;
   @apply uppercase;
   @apply leading-9;
   @apply mb-4;
@@ -101,11 +101,11 @@ a.wordmark:hover {
 }
 
 a.wordmark:hover b {
-  @apply text-gray-medium;
+  @apply text-gray-darker;
 }
 
 a.wordmark:hover span {
-  @apply text-gray-medium;
+  @apply text-gray-darker;
 }
 
 .wordmark b {
@@ -122,8 +122,8 @@ a.wordmark:hover span {
   @apply -mt-1;
 
   font-size: 11px;
-  letter-spacing: .15em;
-  word-spacing: .2em;
+  letter-spacing: 0.15em;
+  word-spacing: 0.2em;
 }
 
 /**
@@ -143,7 +143,7 @@ a.wordmark:hover span {
 .navigation-link.active:focus,
 .navigation-link.active:hover {
   @apply no-underline;
-  @apply text-gray-medium;
+  @apply text-gray-darker;
 }
 
 /**
@@ -178,7 +178,7 @@ main strong {
  */
 
 .footer a {
-  @apply text-gray-medium;
+  @apply text-gray-darker;
 }
 
 .footer a:focus,
@@ -253,14 +253,14 @@ main strong {
   @apply grid;
   @apply my-8;
 
-  grid-template-columns: 60% 40% 100%;
   grid-template-areas: "client tags" "description description";
+  grid-template-columns: 60% 40% 100%;
 }
 
 @screen md {
   .work-detail {
-    grid-template-columns: 25% 15% 1fr;
     grid-template-areas: "client tags description";
+    grid-template-columns: 25% 15% 1fr;
   }
 }
 
@@ -301,7 +301,7 @@ main strong {
   @apply clear-both;
   @apply h-0;
 
-  content: '';
+  content: "";
 }
 
 .wysiwyg > *:first-child {

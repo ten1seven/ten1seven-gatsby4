@@ -7,7 +7,7 @@ class TagList extends React.Component {
   render() {
     return (
       <>
-        <h3 className="sr-only">Tags</h3>
+        <h2 className="sr-only">Tags</h2>
         <ul className="flex flex-wrap">
           {this.props.tags.map((tag, index) => {
             return (

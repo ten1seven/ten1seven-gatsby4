@@ -3,7 +3,7 @@ const {
   rem,
   remPair,
   pxPair,
-} = require("@viget/tailwindcss-plugins/utilities/fns");
+} = require("@viget/tailwindcss-plugins/utilities/fns")
 
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -56,4 +56,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}

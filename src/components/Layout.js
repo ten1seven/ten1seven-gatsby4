@@ -97,7 +97,7 @@ const Layout = ({ isFrontPage, children }) => {
 
       <a
         href="#content"
-        class="bg-gray-darker text-white font-bold p-4 pb-3 absolute block -top-96 left-4 focus:top-4 z-50"
+        className="bg-gray-darker text-white font-bold p-4 pb-3 absolute block -top-96 left-4 focus:top-4 z-50"
       >
         Skip to Main Content
       </a>
@@ -116,10 +116,10 @@ const Layout = ({ isFrontPage, children }) => {
 
           <nav
             className="
-          flex
-          justify-center sm:justify-between
-          sm:flex-grow
-          mb-4 sm:mb-0"
+            flex
+            justify-center sm:justify-between
+            sm:flex-grow
+            mb-4 sm:mb-0"
           >
             <NavLink link="/work/" title="Work" />
             <NavLink link="/services/" title="Services" />
@@ -133,19 +133,19 @@ const Layout = ({ isFrontPage, children }) => {
 
         <footer
           className="
-        footer
-        font-sans
-        pt-4
-        px-6 sm:px-0
-        text-gray-medium
-        text-xs"
+          footer
+          font-sans
+          pt-4
+          px-6 sm:px-0
+          text-gray-darker
+          text-xs"
         >
           <p
             className="
-          border-t-2 sm:border-t-0
-          border-gray-light
-          pt-4 sm:pt-0
-          md:flex"
+            border-t-2 sm:border-t-0
+            border-gray-light
+            pt-4 sm:pt-0
+            md:flex"
           >
             <Link className="pr-4" to="/">
               Home

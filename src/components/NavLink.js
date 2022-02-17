@@ -16,12 +16,13 @@ class NavLink extends React.Component {
           sm:place-items-center
           sm:rounded-t-sm
           text-lg
-          text-gray-medium"
+          text-gray-darker"
         to={this.props.link}
         activeClassName="active"
-        partiallyActive={true}>
-          {this.props.title}
-        </Link>
+        partiallyActive={true}
+      >
+        {this.props.title}
+      </Link>
     )
   }
 }
