@@ -26,7 +26,7 @@ export default class Search extends React.Component {
     })
 
     if (value.length >= 3) {
-      let fetchUrl = `https://cms.ten1seven.com/wp-json/ten1seven/v1/search?s=${value}`
+      let fetchUrl = `${process.env.SEARCH_URL}?s=${value}`
 
       fetch(fetchUrl)
         .then(response => response.json()) // parse JSON from request
@@ -52,7 +52,7 @@ export default class Search extends React.Component {
         <label className="search-label" htmlFor="search-input">
           <input
             autoComplete="off"
-            className="w-full rounded-sm border border-gray-light p-4 pb-3 text-4xl font-khula font-light"
+            className="w-full leading-none rounded-sm border border-gray-light p-4 pb-2 text-4xl font-khula font-light"
             type="text"
             name="query"
             value={this.state.query}

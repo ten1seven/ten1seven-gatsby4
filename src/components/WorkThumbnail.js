@@ -8,7 +8,7 @@ class WorkThumbnail extends React.Component {
   render() {
     let thumb = this.props.thumbnail
     let imagePath = thumb.work.thumbnail.sourceUrl.replace(
-      "https://cms.ten1seven.com/wp-content/uploads/",
+      process.env.UPLOADS_DIR,
       ""
     )
 
@@ -19,7 +19,7 @@ class WorkThumbnail extends React.Component {
             alt=""
             className=""
             aspectRatio={4 / 3}
-            src={`https://ten1seven.imgix.net/${imagePath}`}
+            src={`${process.env.IMGIX_URL}${imagePath}`}
             imgixParams={{
               auto: "format,compress",
               fit: "crop",

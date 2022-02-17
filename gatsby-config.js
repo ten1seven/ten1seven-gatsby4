@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     siteUrl: "https://ten1seven.com",
@@ -7,7 +11,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: "https://cms.ten1seven.com/graphql",
+        url: process.env.GRAPHQL_ENDPOINT,
       },
     },
     {
