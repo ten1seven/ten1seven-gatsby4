@@ -19,7 +19,7 @@ class WorkThumbnail extends React.Component {
             alt=""
             className=""
             aspectRatio={4 / 3}
-            src={`${process.env.IMGIX_URL}${imagePath}`}
+            src={`https://ten1seven.imgix.net/${imagePath}`}
             imgixParams={{
               auto: "format,compress",
               fit: "crop",

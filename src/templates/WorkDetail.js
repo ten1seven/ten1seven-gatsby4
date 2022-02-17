@@ -69,7 +69,7 @@ const WorkTemplate = ({ data }) => (
             <ImgixGatsbyImage
               alt={screenshot.image.altText}
               className="w-full"
-              src={`${process.env.IMGIX_URL}${imagePath}`}
+              src={`https://ten1seven.imgix.net/${imagePath}`}
               imgixParams={{ auto: "format,compress" }}
               layout="constrained"
               sourceWidth={screenshot.image.mediaDetails.width}
