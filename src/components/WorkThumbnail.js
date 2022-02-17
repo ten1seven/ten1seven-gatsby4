@@ -8,7 +8,7 @@ class WorkThumbnail extends React.Component {
   render() {
     let thumb = this.props.thumbnail
     let imagePath = thumb.work.thumbnail.sourceUrl.replace(
-      process.env.UPLOADS_DIR,
+      `${process.env.UPLOADS_DIR}`,
       ""
     )
 
