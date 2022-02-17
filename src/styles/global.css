@@ -30,7 +30,7 @@ body {
   @apply px-0;
   @apply py-4;
   @apply pt-8;
-  @apply text-lg;
+  @apply text-xl;
   @apply text-gray-dark;
 }
 
