@@ -95,6 +95,13 @@ const Layout = ({ isFrontPage, children }) => {
         <link rel="icon" href={favicon} />
       </Helmet>
 
+      <a
+        href="#content"
+        class="bg-gray-darker text-white font-bold p-4 pb-3 absolute block -top-96 left-4 focus:top-4 z-50"
+      >
+        Skip to Main Content
+      </a>
+
       <div className="max-w-900 m-auto" data-is-root-path={isFrontPage}>
         <header className="flex flex-col sm:flex-row">
           {isFrontPage ? (
@@ -120,11 +127,7 @@ const Layout = ({ isFrontPage, children }) => {
           </nav>
         </header>
 
-        <main
-          className="
-        bg-white
-        p-6 sm:p-8 md:p-10"
-        >
+        <main id="content" className="bg-white p-6 sm:p-8 md:p-10">
           {children}
         </main>
 
