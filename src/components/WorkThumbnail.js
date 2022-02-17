@@ -4,11 +4,16 @@ import React from "react"
 import { Link } from "gatsby"
 import { ImgixGatsbyImage } from "@imgix/gatsby"
 
+let imageBase =
+  process.env.NODE_ENV === "development"
+    ? "http://ten1seven-gatsby.test"
+    : "https://cms.ten1seven.com"
+
 class WorkThumbnail extends React.Component {
   render() {
     let thumb = this.props.thumbnail
     let imagePath = thumb.work.thumbnail.sourceUrl.replace(
-      "https://cms.ten1seven.com/wp-content/uploads/",
+      `${imageBase}/wp-content/uploads/`,
       ""
     )
 

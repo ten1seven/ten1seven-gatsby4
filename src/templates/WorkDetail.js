@@ -2,12 +2,16 @@
 
 import React from "react"
 import { Link, graphql } from "gatsby"
-// import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import Layout from "../components/Layout.js"
 import PageTitle from "../components/PageTitle.js"
 import parse from "html-react-parser"
 import { ImgixGatsbyImage } from "@imgix/gatsby"
+
+let imageBase =
+  process.env.NODE_ENV === "development"
+    ? "http://ten1seven-gatsby.test"
+    : "https://cms.ten1seven.com"
 
 const WorkTemplate = ({ data }) => (
   <Layout>
@@ -61,7 +65,7 @@ const WorkTemplate = ({ data }) => (
     <ul className="work-screenshots">
       {data.wpWork.work.images.map((screenshot, index) => {
         let imagePath = screenshot.image.sourceUrl.replace(
-          "https://cms.ten1seven.com/wp-content/uploads/",
+          `${imageBase}/wp-content/uploads/`,
           ""
         )
         return (

@@ -1,6 +1,7 @@
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
+const graphQLRoute =
+  process.env.NODE_ENV === "development"
+    ? "http://ten1seven-gatsby.test/graphql"
+    : "https://cms.ten1seven.com/graphql"
 
 module.exports = {
   siteMetadata: {
@@ -11,7 +12,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: "https://cms.ten1seven.com/graphql",
+        url: graphQLRoute,
       },
     },
     {
