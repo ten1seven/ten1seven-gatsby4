@@ -15,13 +15,6 @@ module.exports = {
         url: graphQLRoute,
       },
     },
-    {
-      resolve: `@imgix/gatsby`,
-      options: {
-        domain: "ten1seven.imgix.net",
-        defaultImgixParams: { auto: ["compress", "format"] },
-      },
-    },
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",

@@ -83,7 +83,19 @@ export const query = graphql`
           uri
           work {
             thumbnail {
-              sourceUrl
+              altText
+              localFile {
+                childImageSharp {
+                  id
+                  gatsbyImageData(
+                    height: 195
+                    width: 260
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                    transformOptions: {cropFocus: NORTH}
+                  )
+                }
+              }
             }
           }
         }

@@ -16,7 +16,7 @@ const HomePageTemplate = ({ data }) => (
       homepage-work
       border-b
       border-gray-light
-      my-8
+      mb-8
       pb-8"
       thumbnails={data.allWpWork.edges}
     />
@@ -75,7 +75,19 @@ export const query = graphql`
           uri
           work {
             thumbnail {
-              sourceUrl
+              altText
+              localFile {
+                childImageSharp {
+                  id
+                  gatsbyImageData(
+                    height: 195
+                    width: 260
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                    transformOptions: {cropFocus: NORTH}
+                  )
+                }
+              }
             }
           }
         }
