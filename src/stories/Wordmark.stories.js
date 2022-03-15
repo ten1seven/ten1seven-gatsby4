@@ -1,4 +1,6 @@
 import React from "react"
+import { graphql } from "gatsby"
+
 import Wordmark from "../components/Wordmark.js"
 
 export default {
