@@ -2,16 +2,11 @@
 
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Seo from "gatsby-plugin-wpgraphql-seo"
 import Layout from "../components/Layout.js"
 import PageTitle from "../components/PageTitle.js"
 import parse from "html-react-parser"
-import { ImgixGatsbyImage } from "@imgix/gatsby"
-
-let imageBase =
-  process.env.NODE_ENV === "development"
-    ? "http://ten1seven-gatsby.test"
-    : "https://cms.ten1seven.com"
 
 const WorkTemplate = ({ data }) => (
   <Layout>
@@ -64,21 +59,11 @@ const WorkTemplate = ({ data }) => (
     <h2 className="sr-only">Images</h2>
     <ul className="work-screenshots">
       {data.wpWork.work.images.map((screenshot, index) => {
-        let imagePath = screenshot.image.sourceUrl.replace(
-          `${imageBase}/wp-content/uploads/`,
-          ""
-        )
+        const image = getImage(screenshot.image.localFile)
+
         return (
           <li className="border-t-2 border-gray-light my-8 pt-8" key={index}>
-            <ImgixGatsbyImage
-              alt={screenshot.image.altText}
-              className="w-full"
-              src={`https://ten1seven.imgix.net/${imagePath}`}
-              imgixParams={{ auto: "format,compress" }}
-              layout="constrained"
-              sourceWidth={screenshot.image.mediaDetails.width}
-              sourceHeight={screenshot.image.mediaDetails.height}
-            />
+            <GatsbyImage className="w-full" image={image} alt={screenshot.image.altText} />
           </li>
         )
       })}
@@ -100,10 +85,13 @@ export const query = graphql`
         images {
           image {
             altText
-            sourceUrl
-            mediaDetails {
-              height
-              width
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: BLURRED
+                  width: 820
+                )
+              }
             }
           }
         }
