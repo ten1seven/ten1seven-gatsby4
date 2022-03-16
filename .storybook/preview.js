@@ -9,3 +9,11 @@ export const parameters = {
     },
   },
 }
+
+export const decorators = [
+  (Story) => (
+    <div className="bg-white p-6 sm:p-8 md:p-10">
+      <Story />
+    </div>
+  ),
+]
